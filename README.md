@@ -1,26 +1,29 @@
-简体中文 | [English](https://github.com/QingdaoU/OnlineJudgeDeploy/blob/2.0/README.en.md)
+简体中文 | [English](https://github.com/illusson/OnlineJudgeDeploy/blob/2.0/README.en.md)
 
 ## 环境准备
 
 ### Linux 环境
 
++ 系统: CentOS 8.2
+
 1. 安装必要的依赖
 
     ```bash
-    sudo apt-get update && sudo apt-get install -y vim python3-pip curl git
     pip3 install --upgrade pip
     pip install docker-compose
     ```
 
-2. 安装 Docker 
-
-    国内用户使用脚本一键安装: `sudo curl -sSL https://get.daocloud.io/docker | sh`  
-    国外用户使用脚本一键安装: `sudo curl -sSL get.docker.com | sh`
+2. 安装 Docker
+    
+    ```bash
+   yum install -y yum-utils
+   yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+   yum install docker-ce docker-ce-cli containerd.io
+   ```
     
     详细步骤参照： [https://docs.docker.com/install/](https://docs.docker.com/install/)
 
 ### Windows 环境
-
 
 Windows 下的安装仅供体验，勿在生产环境使用。如有必要，请使用虚拟机安装 Linux 并将 OJ 安装在其中。
 
@@ -37,7 +40,7 @@ Windows 下的安装仅供体验，勿在生产环境使用。如有必要，请
 1. 请选择磁盘空间富余的位置，运行下面的命令
 
     ```bash
-    git clone -b 2.0 https://github.com/QingdaoU/OnlineJudgeDeploy.git && cd OnlineJudgeDeploy
+    git clone -b 2.0 https://github.com/illusson/OnlineJudgeDeploy.git && cd OnlineJudgeDeploy
     ```
 
 2. 启动服务
@@ -52,7 +55,9 @@ Windows 下的安装仅供体验，勿在生产环境使用。如有必要，请
 
 ## 尽情享用吧
 
-通过浏览器访问服务器的 HTTP 80 端口或者 HTTPS 443 端口，就可以开始使用了。后台管理路径为`/admin`, 安装过程中自动添加的超级管理员用户名为 `root`，密码为 `rootroot`， **请务必及时修改密码**。
+启动后服务将监听 8888 端口，可使用 nginx 或 apache 反代并接入 SSL。
+
+后台管理路径为`/admin`, 安装过程中自动添加的超级管理员用户名为 `root`，密码为 `rootroot`， **请务必及时修改密码**。
 
 不要忘记阅读文档 http://opensource.qduoj.com/
 
